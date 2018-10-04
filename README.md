@@ -1,2 +1,7 @@
 # sql
 sql queries
+
+
+
+
+jjkfdjkhfskdhk
