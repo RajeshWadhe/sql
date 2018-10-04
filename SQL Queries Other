@@ -1,0 +1,9 @@
+1.  To print employee details whose employee id is between 100 and 160 
+
+SELECT *FROM EMPLOYEES 
+WHERE EMPLOYEE_ID BETWEEN '100' AND '160';
+
+
+
+
+
