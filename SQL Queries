@@ -86,9 +86,13 @@ Query -- > SELECT EMPLOYEES.FIRST_NAME, (END_DATE-START_DATE) AS EXPERIENCE_IN_D
 
 15. Display first name of employees who joined in 2001.
 
-
+Query --> SELECT FIRST_NAME FROM EMPLOYEES
+	  WHERE TO_CHAR(HIRE_DATE,'YYYY')='2001';
 
 16. Display first name and last name after converting the first letter of each name to upper case and the rest to lower case.
+
+
+
 17. Display the first word in job title.
 18. Display the length of first name for employees where last name contain character ‘b’ after 3rd 
 position.
