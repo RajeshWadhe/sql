@@ -70,12 +70,24 @@ Query -- > SELECT *FROM EMPLOYEES
 Query -- > select *from employees
 	   where commission_pct is null and salary between 5000 and 10000 
 	   and department_id=30;
+	   
+	  [need to run on oracle]
 
 13. Display first name and date of first salary of the employees.
 
+Query -- > SELECT first_name, hire_date, LAST_DAY(hire_date) from employees;
+	   [Need to run on oracle]
+
 14. Display first name and experience of the employees.
 
+Query -- > SELECT EMPLOYEES.FIRST_NAME, (END_DATE-START_DATE) AS EXPERIENCE_IN_DAYS
+	   FROM EMPLOYEES INNER JOIN JOB_HISTORY ON
+	   EMPLOYEES.EMPLOYEE_ID=JOB_HISTORY.EMPLOYEE_ID;
+
 15. Display first name of employees who joined in 2001.
+
+
+
 16. Display first name and last name after converting the first letter of each name to upper case and the rest to lower case.
 17. Display the first word in job title.
 18. Display the length of first name for employees where last name contain character ‘b’ after 3rd 
