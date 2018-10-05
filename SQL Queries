@@ -42,8 +42,8 @@ WHERE SALARY<10000;
 7. Display job Title, the difference between minimum and maximum salaries for jobs with max salary in the range 10000 to 20000.
 
 Query -- > SELECT JOB_TITLE, MAX_SALARY-MIN_SALARY AS DIFF
-     FROM JOBS
-     WHERE MAX_SALARY BETWEEN 10000 AND 20000;
+     	   FROM JOBS
+     	   WHERE MAX_SALARY BETWEEN 10000 AND 20000;
 
 8. Display first name, salary, and round the salary to thousands.
 
@@ -53,19 +53,23 @@ Query -- > SELECT FIRST_NAME, ROUND(SALARY,-3)
 9. Display details of jobs in the descending order of the title.
 
 Query -- >  SELECT *FROM JOBS
-ORDER BY JOB_TITLE DESC;
+	    ORDER BY JOB_TITLE DESC;
 
 10. Display employees where the first name or last name starts with S.
 
 Query -- > SELECT *FROM EMPLOYEES 
-WHERE FIRST_NAME LIKE 'S%' OR LAST_NAME LIKE 'S%';
+	   WHERE FIRST_NAME LIKE 'S%' OR LAST_NAME LIKE 'S%';
 
 11. Display employees who joined in the month of May.
 
 Query -- > SELECT *FROM EMPLOYEES 
-WHERE TO_CHAR(HIRE_DATE,'MM')='05';
+           WHERE TO_CHAR(HIRE_DATE,'MM')='05';
 
 12. Display details of the employees where commission percentage is null and salary in the range 5000 to 10000 and department is 30.
+
+Query -- > select *from employees
+	   where commission_pct is null and salary between 5000 and 10000 
+	   and department_id=30;
 
 13. Display first name and date of first salary of the employees.
 
