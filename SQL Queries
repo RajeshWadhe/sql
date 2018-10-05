@@ -93,6 +93,8 @@ Query --> SELECT FIRST_NAME FROM EMPLOYEES
 
 
 
+
+
 17. Display the first word in job title.
 18. Display the length of first name for employees where last name contain character ‘b’ after 3rd 
 position.
