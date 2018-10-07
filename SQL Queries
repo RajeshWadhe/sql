@@ -90,12 +90,15 @@ Query --> SELECT FIRST_NAME FROM EMPLOYEES
 	  WHERE TO_CHAR(HIRE_DATE,'YYYY')='2001';
 
 16. Display first name and last name after converting the first letter of each name to upper case and the rest to lower case.
-
-
-
-
+Query --> select 
+	  initcap(first_name) || LOWER(SUBSTR(first_name,2,LENGTH(first_name))) FIRST_NAME,
+	  initcap(last_name) || LOWER(SUBSTR(last_name,2,LENGTH(last_name))) LAST_NAME
+          from employees;
 
 17. Display the first word in job title.
+
+
+
 18. Display the length of first name for employees where last name contain character ‘b’ after 3rd 
 position.
 19. Display first name in upper case and email address in lower case for employees where the first 
