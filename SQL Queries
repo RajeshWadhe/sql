@@ -97,10 +97,13 @@ Query --> select
 
 17. Display the first word in job title.
 
+Query --> SELECT job_title, SUBSTR(job_title,1, INSTR(job_title, ' ')-1)
+	  from hr.jobs;
+
+18. Display the length of first name for employees where last name contain character ‘b’ after 3rd position.
 
 
-18. Display the length of first name for employees where last name contain character ‘b’ after 3rd 
-position.
+
 19. Display first name in upper case and email address in lower case for employees where the first 
 name and email address are same irrespective of the case.
 20. Display employees who joined in the current year.
