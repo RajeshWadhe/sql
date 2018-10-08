@@ -164,11 +164,46 @@ Query --> select employee_id, department_id, AVG(salary)
 28. Display job ID, number of employees, sum of salary, and difference between highest salary and  lowest salary 
 of the employees of the job.
 
+Query --> select job_id, count(*), sum(salary), max(salary)-min(salary) as difference
+     	  from employees
+          group by job_id;
+
 29. Display job ID for jobs with average salary more than 10000.
+
+Query --> SELECT job_id, AVG(salary)
+          FROM employees
+          GROUP BY job_id
+          HAVING AVG(salary)>10000;
+
 30. Display years in which more than 10 employees joined.
+
+Query -- > select DATE_FORMAT(HIRE_DATE,'%Y')
+	   from employees
+	   group by DATE_FORMAT(HIRE_DATE,'%Y')
+	   having count(employee_id)>10;
+
 31. Display departments in which more than five employees have commission percentage.
+
+Query --> select department_id
+          from employees
+          where commission_pct is not null
+          group by department_id
+          having count(commission_pct)>5
+
 32. Display employee ID for employees who did more than one job in the past.
+
+Query --> select employee_id
+          from job_history
+          group by employee_id
+          having count(job_id)>1;
+
 33. Display job ID of jobs that were done by more than 3 employees for more than 100 days.
+Query --> select job_id
+          from job_history
+          where end_date-start_date
+          group by job_id
+          having count(*)>3;
+
 34. Display department ID, year, and Number of employees joined.
 35. Display departments where any manager is managing more than 5 employees.
 36. Change salary of employee 115 to 8000 if the existing salary is less than 6000.
