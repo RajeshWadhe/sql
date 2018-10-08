@@ -5,39 +5,39 @@ sql queries
 1. Display details of jobs where the minimum salary is greater than 10000.
 
 i) Query -- > SELECT JOB_ID,JOB_TITLE,MIN_SALARY,MAX_SALARY FROM JOBS
-        WHERE MIN_SALARY>10000;
+              WHERE MIN_SALARY>10000;
 ii) Query -- > SELECT *FROM JOBS WHERE MIN_SALARY>10000;
 
 2. Display the first name and join date of the employees who joined between 2002 and 2005.
 
 Query -- > SELECT FIRST_NAME, HIRE_DATE FROM  EMPLOYEES
-                   WHERE HIRE_DATE BETWEEN '2003-01-01' AND '2005-12-31';
+           WHERE HIRE_DATE BETWEEN '2003-01-01' AND '2005-12-31';
 
 3. Display first name and join date of the employees who is either IT Programmer or Sales Man.
  
 Query  -- > SELECT FIRST_NAME, HIRE_DATE FROM EMPLOYEES
-WHERE JOB_ID IN('SA_MAN','IT_PROG');
+            WHERE JOB_ID IN('SA_MAN','IT_PROG');
 
 4. Display employees who joined after 1st January 2008.
 
 Query -- > SELECT EMPLOYEE_ID,FIRST_NAME, LAST_NAME
-FROM EMPLOYEES
-WHERE HIRE_DATE >'2008-01-01';
+           FROM EMPLOYEES
+           WHERE HIRE_DATE >'2008-01-01';
 
 5.  Display details of employee with ID 150 or 160.
 
 Query -- > SELECT *FROM EMPLOYEES
-WHERE EMPLOYEE_ID IN(150,160);
+           WHERE EMPLOYEE_ID IN(150,160);
 
 Query -- > SELECT *FROM EMPLOYEES
-WHERE EMPLOYEE_ID=150 OR EMPLOYEE_ID=160;
+           WHERE EMPLOYEE_ID=150 OR EMPLOYEE_ID=160;
 
 
 6. Display first name, salary, commission pct, and hire date for employees with salary less than 10000.
 
 Query -- > SELECT FIRST_NAME, SALARY, COMMISSION_PCT, HIRE_DATE 
-FROM EMPLOYEES 
-WHERE SALARY<10000;
+           FROM EMPLOYEES 
+           WHERE SALARY<10000;
 
 7. Display job Title, the difference between minimum and maximum salaries for jobs with max salary in the range 10000 to 20000.
 
@@ -125,7 +125,18 @@ Query --> SELECT distinct trunc('10/08/2018')-to_date('01/01/2011','dd/mm/yyyy')
 	  from employees;
 
 22. Display how many employees joined in each month of the current year.
+
+Query --> select count(employee_id)
+	  where TO_CHAR(HIRE_DATE,'YYYY')=2004  
+	  from employees;
+	  [does not work --> try later]
+
 23. Display manager ID and number of employees managed by the manager.
+
+Query --> select manager_id,count(*)  
+	  from employees
+	  group by manager_id;
+
 24. Display employee ID and the date on which he ended his previous job.
 
 25. Display number of employees joined after 15th of the month.
