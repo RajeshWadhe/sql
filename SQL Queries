@@ -289,6 +289,10 @@ Query --> select j.job_title, avg(salary)
 48. Display job title, employee name, and the difference between maximum salary for the job and 
 salary of the employee.
 
+Query --> select j.job_title, e.first_name, e.last_name, max(e.salary)-e.salary
+	  from jobs j inner join employees e
+	  on (j.department_id=e.department_id)
+
 49. Display last name, job title of employees who have commission percentage and belongs to 
 department 30.
 50. Display details of jobs that were done by any employee who is currently drawing more than 
