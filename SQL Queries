@@ -205,8 +205,22 @@ Query --> select job_id
           having count(*)>3;
 
 34. Display department ID, year, and Number of employees joined.
+ 
+Query --> select department_id, DATE_FORMAT(HIRE_DATE,'%Y'), count(employee_id) 
+	  from employees
+	  group by DATE_FORMAT(HIRE_DATE,'%Y')
+	  having count(employee_id)>10;
+
 35. Display departments where any manager is managing more than 5 employees.
+
+Query --> select department_id as department_id, employee_id as employee_id
+	  from employees
+	  group by department_id
+	  having count(employee_id)>5;
+
 36. Change salary of employee 115 to 8000 if the existing salary is less than 6000.
+
+
 37. Insert a new employee into employees with all the required details.
 38. Delete department 20.
 39. Change job ID of employee 110 to IT_PROG if the employee belongs to department 10 and the 
