@@ -149,9 +149,21 @@ Query -- > SELECT COUNT(*) FROM EMPLOYEES
 	   WHERE TO_CHAR(HIRE_DATE,'DD')>'15';
 
 26. Display the country ID and number of cities we have in the country.
+
+Query --> select country_id,count(*)
+	  from countries
+	  group by country_id;
+
 27. Display average salary of employees in each department who have commission percentage.
-28. Display job ID, number of employees, sum of salary, and difference between highest salary and 
-lowest salary of the employees of the job.
+
+Query --> select employee_id, department_id, AVG(salary)
+	  from employees
+	  where commission_pct IS NOT NULL
+	  group by department_id;
+
+28. Display job ID, number of employees, sum of salary, and difference between highest salary and  lowest salary 
+of the employees of the job.
+
 29. Display job ID for jobs with average salary more than 10000.
 30. Display years in which more than 10 employees joined.
 31. Display departments in which more than five employees have commission percentage.
