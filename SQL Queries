@@ -237,20 +237,58 @@ Query --> delete from departments where department_id=20;
 
 39. Change job ID of employee 110 to IT_PROG if the employee belongs to department 10 and the 
 existing job ID does not start with IT.
+
+Query --> SELECT * FROM  employees 
+	  WHERE employee_id=110 
+	  AND department_id=10
+	  AND JOB_ID LIKE 'IT%';
+
 40. Insert a row into departments table with manager ID 120 and location ID in any location ID for 
 city Tokyo.
+
 41. Display department name and number of employees in the department.
+
+Query --> select department_id, count(department_id)
+	  from employees
+	  group by department_id;
+
 42. Display job title, employee ID, number of days between ending date and starting date for all 
 jobs in department 30 from job history.
+
 43. Display department name and manager first name.
-44. Display department name, manager name, and
-city.
+
+Query --> select d.department_name, d.manager_id, e.first_name
+	  from departments d inner join employees e
+	  on (d.department_id=e.department_id);
+
+44. Display department name, manager name, and city.
+
+Query --> select d.department_name, e.first_name, l.city
+	  from departments d
+	  inner join employees e
+	  on(d.department_id=e.department_id)
+	  inner join locations l using(location_id)
+
 45. Display country name, city, and department name.
+
+Query --> select c.country_name, l.city, d.department_name 
+	  from countries c
+          inner join locations l
+	  on (c.country_id=l.country_id)
+	  inner join departments d using(location_id)
+
 46. Display job title, department name, employee last name, starting date for all jobs from 2000 to 
 2005.
+
 47. Display job title and average salary of employees
+
+Query --> select j.job_title, avg(salary)
+	  from jobs j  inner join employees e
+	  on (j.job_id=e.job_id);
+ 
 48. Display job title, employee name, and the difference between maximum salary for the job and 
 salary of the employee.
+
 49. Display last name, job title of employees who have commission percentage and belongs to 
 department 30.
 50. Display details of jobs that were done by any employee who is currently drawing more than 
