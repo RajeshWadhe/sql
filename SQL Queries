@@ -106,10 +106,21 @@ Query --> select first_name, length(first_name), last_name
 	  from hr.employees
 	  where instr(last_name,'b')>3;
 
-19. Display first name in upper case and email address in lower case for employees where the first 
-name and email address are same irrespective of the case.
+19. Display first name in upper case and email address in lower case for employees where the first name and email address 
+are same irrespective of the case.
+
+Query --> SELECT UPPER(first_name), LOWER(email)
+	  where UPPER(first_name)=LOWER(email)
+	  from employees;
+
 20. Display employees who joined in the current year.
+
+Query --> select *from employees
+	  where TO_CHAR(HIRE_DATE,'YYYY')='2004';
+	  [need to correct --> it is half correct]
+
 21. Display the number of days between system date and 1st January 2011.
+
 22. Display how many employees joined in each month of the current year.
 23. Display manager ID and number of employees managed by the manager.
 24. Display employee ID and the date on which he ended his previous job.
