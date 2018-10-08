@@ -116,10 +116,13 @@ Query --> SELECT UPPER(first_name), LOWER(email)
 20. Display employees who joined in the current year.
 
 Query --> select *from employees
-	  where TO_CHAR(HIRE_DATE,'YYYY')='2004';
-	  [need to correct --> it is half correct]
+	  where TO_CHAR(HIRE_DATE,'YYYY')='2018';
+	  [ there is no record for 2018 and sysdate does not work here.]
 
 21. Display the number of days between system date and 1st January 2011.
+
+Query --> SELECT distinct trunc('10/08/2018')-to_date('01/01/2011','dd/mm/yyyy') 
+	  from employees;
 
 22. Display how many employees joined in each month of the current year.
 23. Display manager ID and number of employees managed by the manager.
