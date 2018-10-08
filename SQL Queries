@@ -220,9 +220,21 @@ Query --> select department_id as department_id, employee_id as employee_id
 
 36. Change salary of employee 115 to 8000 if the existing salary is less than 6000.
 
+Query --> UPDATE employees 
+	  SET SALARY = 8000 
+	  WHERE employee_id = 105 AND salary < 5000;
 
 37. Insert a new employee into employees with all the required details.
+
+Query --> insert into employee(employee_id,first_name, last_name,email,phone_number, hire_date, 
+	  job_id, salary, commission_pct, manager_id, department_id) 
+	  values(207,'rajesh','wadhe','rajeshwadhe@gmail.com',515.123.6789,
+	  2018-07-02,'AD_PRES',22000.00,0.00,100,90);
+
 38. Delete department 20.
+
+Query --> delete from departments where department_id=20;
+
 39. Change job ID of employee 110 to IT_PROG if the employee belongs to department 10 and the 
 existing job ID does not start with IT.
 40. Insert a row into departments table with manager ID 120 and location ID in any location ID for 
