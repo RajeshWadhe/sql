@@ -139,10 +139,14 @@ Query --> select manager_id,count(*)
 
 24. Display employee ID and the date on which he ended his previous job.
 
+Query --> select employee_id, end_date 
+	  from job_history;
+
+
 25. Display number of employees joined after 15th of the month.
 
 Query -- > SELECT COUNT(*) FROM EMPLOYEES 
-WHERE TO_CHAR(HIRE_DATE,'DD')>'15';
+	   WHERE TO_CHAR(HIRE_DATE,'DD')>'15';
 
 26. Display the country ID and number of cities we have in the country.
 27. Display average salary of employees in each department who have commission percentage.
