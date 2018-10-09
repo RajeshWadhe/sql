@@ -310,17 +310,49 @@ Query --> select *from employees
 51. Display department name, manager name, and salary of the manager for all managers whose 
 experience is more than 5 years.
 
-
+Query --> select d.department_name, e.first_name, e.salary
+	  from departments d inner join employees e
+	  on (d.manager_id=e.manager_id)
+	  where (sysdate()-hire_date)/365 > 5
 
 52. Display employee name if the employee joined before his manager.
+
+Query --> select  e.last_name, e.hire_date, d.last_name, d.hire_date
+	  from employees e, employees d
+	  where e.employee_id=d.manager_id AND e.hire_date < d.hire_date
+
 53. Display employee name, job title for the jobs employee did in the past where the job was done 
 less than six months.
+
+
 54. Display employee name and country in which he is working.
+
+Query --> select first_name || ' ' || last_name as employee_name, employee_id, country_name
+	  from employees 
+	  join departments using(department_id)
+	  join locations using(location_id)
+	  join countries using(country_id)
+
 55. Display department name, average salary and number of employees with commission within 
 the department.
+
+Query --> select department_name, avg(salary), count(commission_pct)
+	  from departments 
+	  inner join employees  using(department_id)
+	  group by department_name
+
 56. Display the month in which more than 5 employees joined in any department located in 
 Sydney.
+
+Query --> select DATE_FORMAT(HIRE_DATE,'%M')
+	  from employees
+	  group by DATE_FORMAT(HIRE_DATE,'%M')
+	  having count(employee_id)>5;
+ 
 57. Display details of departments in which the maximum salary is more than 10000.
+
+
+
 58. Display details of departments managed by ‘Smith’.
 59. Display jobs into which employees joined in the current year.
 60. Display employees who did not do any job in the past.
