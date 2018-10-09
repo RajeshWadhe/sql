@@ -382,10 +382,27 @@ Query --> SELECT job_title, AVG(salary)
 62. Display country name, city, and number of departments where department has more than 5 
 employees.
 
+Query --> select country_name,city, count(department_id)
+	  from countries join locations using(country_id) join departments using(location_id)
+	  where department_id IN
+	  (select department_id from employees 
+	  group by department_id
+	  having count(department_id)>5)
+	  group by country_name, city
 
 63. Display details of manager who manages more than 5 employees.
+
+Query --> select first_name, manager_id from employees
+	  where employee_id IN
+	  (select manager_id from employees 
+	  group by manager_id 
+	  having count(manager_id)>5)
+
 64. Display employee name, job title, start date, and end date of past jobs of all employees with 
 commission percentage null.
+
+
+
 65. Display the departments into which no employee joined in last two years.
 66. Display the details of departments in which the max salary is greater than 10000 for employees 
 who did a job in the past.
