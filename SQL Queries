@@ -351,14 +351,38 @@ Query --> select DATE_FORMAT(HIRE_DATE,'%M')
  
 57. Display details of departments in which the maximum salary is more than 10000.
 
-
+Query --> select *from departments
+	  where department_id IN
+	  (select department_id from employees
+	  group by department_id
+  	  having max(salary)>10000)
 
 58. Display details of departments managed by ‘Smith’.
+
+Query --> select *from departments where manager_id IN
+	  (select employee_id from employees where first_name='Smith')
+
 59. Display jobs into which employees joined in the current year.
+
+Query --> select job_title from jobs 
+	  where hire_date In(select job_id from employees where 
+	  DATE_FORMAT(hire_date,'%Y')=DATE_FORMAT(SYSDATE(),'%Y'))
+
 60. Display employees who did not do any job in the past.
+
+Query --> select *from employees where employee_id not in
+	  (select employee_id from job_history)
+
 61. Display job title and average salary for employees who did a job in the past.
+
+Query --> SELECT job_title, AVG(salary) 
+	  FROM jobs NATURAL JOIN employees 
+	  WHERE employee_id IN (SELECT employee_id FROM job_history)
+
 62. Display country name, city, and number of departments where department has more than 5 
 employees.
+
+
 63. Display details of manager who manages more than 5 employees.
 64. Display employee name, job title, start date, and end date of past jobs of all employees with 
 commission percentage null.
