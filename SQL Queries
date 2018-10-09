@@ -295,10 +295,23 @@ Query --> select j.job_title, e.first_name, e.last_name, max(e.salary)-e.salary
 
 49. Display last name, job title of employees who have commission percentage and belongs to 
 department 30.
+
+Query --> select e.last_name, j.job_title
+	  from employees e inner join jobs j
+	  on (e.job_id=j.job_id)
+	  where e.commission_pct is not null AND e.department_id=30
+
 50. Display details of jobs that were done by any employee who is currently drawing more than 
 15000 of salary.
+
+Query --> select *from employees
+	  where salary>15000
+
 51. Display department name, manager name, and salary of the manager for all managers whose 
 experience is more than 5 years.
+
+
+
 52. Display employee name if the employee joined before his manager.
 53. Display employee name, job title for the jobs employee did in the past where the job was done 
 less than six months.
