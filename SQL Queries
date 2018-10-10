@@ -401,17 +401,55 @@ Query --> select first_name, manager_id from employees
 64. Display employee name, job title, start date, and end date of past jobs of all employees with 
 commission percentage null.
 
-
+Query --> select first_name, job_title, start_date, end_date
+	  from job_history jh join jobs j using(job_id) join employees e on(jh.employee_id=e.employee_id)
+	  where commission_pct is null
 
 65. Display the departments into which no employee joined in last two years.
+
+Query --> select *from departments 
+	  where department_id not IN
+	  (select department_id from employees
+	  where floor((sysdate()-hire_date)/365)>2 )
+
 66. Display the details of departments in which the max salary is greater than 10000 for employees 
 who did a job in the past.
+
+Query --> select *from departments 
+	  where department_id in
+	  (select department_id from employees
+	  where employee_id in(select employee_id from job_history) 
+	  group by department_id
+	  having max(salary)>10000 )
+
 67. Display details of current job for employees who worked as IT Programmers in the past.
+
+Query --> select *from jobs
+	  where job_id in
+	  (select job_id from employees 
+          where employee_id in(select employee_id from job_history
+                               where job_id = 'IT_PROG'))
+
 68. Display the details of employees drawing the highest salary in the department.
+
+Query --> select *from employees 
+	  where employee_id in (select department_id from employees
+                                group by department_id 
+                                having max(salary))
+
 69. Display the city of employee whose employee ID is 105.
+
+Query --> select city, location_id, first_name, employee_id
+	  from locations l join departments d using(location_id) join employees e using(department_id)
+	  where employee_id = 105
+
 70. Display third highest salary of all employees	
 
-
+Query --> SELECT * FROM Employees Emp1
+WHERE 3 = (    SELECT COUNT(DISTINCT(Emp2.Salary))
+               FROM Employees Emp2
+               WHERE Emp2.Salary > Emp1.Salary
+               )
 
 PL/SQL Programs
 (Write stored procedures for all the given problems)
